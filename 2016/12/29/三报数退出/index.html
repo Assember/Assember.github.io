@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      三报数退出的改进优化 | Assember&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Freezer">
+    
+    
+
+    <meta name="description" content="有n人围成一圈，顺序排号。从第1个人开始报数（从1到3报数），凡报到3的人退出圈子，问最后留下的是原来的第几号的那位。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三报数退出的改进优化 | Assember's Blog">
+<meta property="og:url" content="http://assember.github.io/2016/12/29/三报数退出/index.html">
+<meta property="og:site_name" content="Assember's Blog">
+<meta property="og:description" content="有n人围成一圈，顺序排号。从第1个人开始报数（从1到3报数），凡报到3的人退出圈子，问最后留下的是原来的第几号的那位。">
+<meta property="og:image" content="http://assember.github.io/../pic/报数退出excel.png">
+<meta property="og:image" content="http://assember.github.io/../pic/模拟结果.png">
+<meta property="og:updated_time" content="2016-12-29T14:33:12.460Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="三报数退出的改进优化 | Assember's Blog">
+<meta name="twitter:description" content="有n人围成一圈，顺序排号。从第1个人开始报数（从1到3报数），凡报到3的人退出圈子，问最后留下的是原来的第几号的那位。">
+<meta name="twitter:image" content="http://assember.github.io/../pic/报数退出excel.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Assember&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          I am a worker who assemble forever
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archives" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/assember" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">三报数退出的改进优化</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-12-29" class="post-meta__date date">2016-12-29</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>有n人围成一圈，顺序排号。从第1个人开始报数（从1到3报数），凡报到3的人退出圈子，问最后留下的是原来的第几号的那位。<br><a id="more"></a></p>
+<p>刚开始的时候我也是写的暴力算法。<br>整个程序的设计思路是这个样子：<br>首先，我们先寻找一种易于删除中间数据的数据结构，比如，循环链表。<br>我们新建一个链表将所有的人都放进去，然后开始删除结点，直到剩下一个就停止。</p>
+<p>忘记代码来源了，程序代码如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> n,i=<span class="number">0</span>,j,k,a,q=<span class="number">0</span>,(*p)[<span class="number">2</span>];</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line"></div><div class="line">	p=(<span class="keyword">int</span> (*)[<span class="number">2</span>])<span class="built_in">calloc</span>(n+<span class="number">1</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span> (*)[<span class="number">2</span>]));</div><div class="line"></div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">	&#123;</div><div class="line">		*(*(p+i)+<span class="number">0</span>)=<span class="number">1</span>;</div><div class="line">		*(*(p+i)+<span class="number">1</span>)=i+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	*(*(p+n)+<span class="number">0</span>)=<span class="number">0</span>;</div><div class="line">	*(*(p+n)+<span class="number">1</span>)=n+<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (;n!=<span class="number">1</span>;)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">for</span>(j=i+<span class="number">2</span>,q=<span class="number">0</span>;j&lt;n-q;j+=<span class="number">2</span>,q++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">for</span>(k=j;k&lt;n;k++)</div><div class="line">			&#123;</div><div class="line">				*(*(p+k)+<span class="number">0</span>)=*(*(p+k+<span class="number">1</span>)+<span class="number">0</span>);</div><div class="line">				*(*(p+k)+<span class="number">1</span>)=*(*(p+k+<span class="number">1</span>)+<span class="number">1</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		a=n+<span class="number">3</span>-i;</div><div class="line"></div><div class="line">		<span class="keyword">if</span>(a%<span class="number">3</span>==<span class="number">1</span>)</div><div class="line">			i=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(a%<span class="number">3</span>==<span class="number">2</span>)i=<span class="number">-2</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">			i=<span class="number">0</span>;</div><div class="line">			n=n-q;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"最后剩下的是%d号同学\n\n"</span>,*(*(p+<span class="number">0</span>)+<span class="number">1</span>));</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>可是人总是不甘心使用复杂的方式描述一个简单的问题。</strong><br>                                          –Assember</p>
+</blockquote>
+<p>我总觉得这个问题有迹可循，所以我就跑出了当n从1-200的所有数据。</p>
+<p>具体实现代码如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE_PATH <span class="meta-string">"D:/demo.txt"</span>  <span class="comment">// 文件路径</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	FILE *fp;  <span class="comment">// 文件指针</span></div><div class="line"> <span class="comment">// 判断文件是否能够正确创建/打开</span></div><div class="line">    <span class="keyword">if</span>( (fp=fopen(FILE_PATH,<span class="string">"wt+"</span>)) == <span class="literal">NULL</span> )&#123;</div><div class="line">        perror(FILE_PATH);</div><div class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> f = <span class="number">3</span>; f&lt;<span class="number">200</span>; f++)&#123;</div><div class="line"></div><div class="line">	<span class="keyword">int</span> n,i=<span class="number">0</span>,j,k,a,q=<span class="number">0</span>,(*p)[<span class="number">2</span>];</div><div class="line">	n= f;</div><div class="line">	p=(<span class="keyword">int</span> (*)[<span class="number">2</span>])<span class="built_in">calloc</span>(n+<span class="number">1</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span> (*)[<span class="number">2</span>]));</div><div class="line"></div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">	&#123;</div><div class="line">		*(*(p+i)+<span class="number">0</span>)=<span class="number">1</span>;</div><div class="line">		*(*(p+i)+<span class="number">1</span>)=i+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	*(*(p+n)+<span class="number">0</span>)=<span class="number">0</span>;</div><div class="line">	*(*(p+n)+<span class="number">1</span>)=n+<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (;n!=<span class="number">1</span>;)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">for</span>(j=i+<span class="number">2</span>,q=<span class="number">0</span>;j&lt;n-q;j+=<span class="number">2</span>,q++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">for</span>(k=j;k&lt;n;k++)</div><div class="line">			&#123;</div><div class="line">				*(*(p+k)+<span class="number">0</span>)=*(*(p+k+<span class="number">1</span>)+<span class="number">0</span>);</div><div class="line">				*(*(p+k)+<span class="number">1</span>)=*(*(p+k+<span class="number">1</span>)+<span class="number">1</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		a=n+<span class="number">3</span>-i;</div><div class="line"></div><div class="line">		<span class="keyword">if</span>(a%<span class="number">3</span>==<span class="number">1</span>)</div><div class="line">			i=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(a%<span class="number">3</span>==<span class="number">2</span>)i=<span class="number">-2</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">			i=<span class="number">0</span>;</div><div class="line">			n=n-q;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"最后剩下的是%d号同学\n\n"</span>,*(*(p+<span class="number">0</span>)+<span class="number">1</span>));</div><div class="line"></div><div class="line">    <span class="comment">// 从控制台输入学生信息并写入文件</span></div><div class="line">        <span class="built_in">fprintf</span>(fp,<span class="string">"%d\t%d\n"</span>, f, *(*(p+<span class="number">0</span>)+<span class="number">1</span>));</div><div class="line">    <span class="comment">// 刷新缓冲区，将缓冲区的内容写入文件</span></div><div class="line">    fflush(fp);</div><div class="line">    <span class="comment">// 重置文件内部位置指针，让位置指针指向文件开头</span></div><div class="line">    <span class="comment">//rewind(fp);</span></div><div class="line"></div><div class="line">&#125;fclose(fp);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后，我就拿着数据去做了excel表格，分别以n和最终留下的号码为横纵坐标，然后得到了下图：</p>
+<p><img src="/../pic/报数退出excel.png" alt="报数退出"></p>
+<p><strong>Woc，这绝对有规律！</strong></p>
+<p>然后我就生成数据和模拟这条折线，就是简单的y=ax+b.<br>并且生成了一组数据去和原数据进行比较，<strong>结果竟然成功了!</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE_PATH <span class="meta-string">"D:/demo2.txt"</span>  <span class="comment">// 文件路径</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	FILE *fp;  <span class="comment">// 文件指针</span></div><div class="line"> <span class="comment">// 判断文件是否能够正确创建/打开</span></div><div class="line">    <span class="keyword">if</span>( (fp=fopen(FILE_PATH,<span class="string">"wt+"</span>)) == <span class="literal">NULL</span> )&#123;</div><div class="line">        perror(FILE_PATH);</div><div class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> a[<span class="number">200</span>] = &#123;<span class="number">0</span>&#125;;</div><div class="line">    a[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">	a[<span class="number">2</span>] = <span class="number">2</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>, j = <span class="number">2</span>; i&lt;<span class="number">200</span>; i++)&#123;</div><div class="line">    	<span class="keyword">if</span>( (j+<span class="number">3</span>) &gt; i)</div><div class="line">    		j = j+<span class="number">3</span>-i;</div><div class="line">    	<span class="keyword">else</span></div><div class="line">    		j = j+<span class="number">3</span>;</div><div class="line">    	a[i] = j;</div><div class="line">	&#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> f = <span class="number">3</span>; f&lt;<span class="number">200</span>; f++)&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 从控制台输入学生信息并写入文件</span></div><div class="line">        <span class="built_in">fprintf</span>(fp,<span class="string">"%d\t%d\n"</span>, f, a[f]);</div><div class="line">    <span class="comment">// 刷新缓冲区，将缓冲区的内容写入文件</span></div><div class="line">    fflush(fp);</div><div class="line">    <span class="comment">// 重置文件内部位置指针，让位置指针指向文件开头</span></div><div class="line">    <span class="comment">//rewind(fp);</span></div><div class="line"></div><div class="line">&#125;fclose(fp);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果如下图所示，完全重合:<br><img src="/../pic/模拟结果.png" alt="测试数据"></p>
+<p>然后，我就得到了我们新的代码，经过测试，完全可以实现报数退出。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> n;</div><div class="line">	<span class="keyword">int</span> a[<span class="number">200</span>] = &#123;<span class="number">0</span>&#125;;</div><div class="line">	a[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">	a[<span class="number">1</span>] = <span class="number">2</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>, j = <span class="number">2</span>; i&lt;<span class="number">200</span>; i++)&#123;</div><div class="line">		j = (j+<span class="number">3</span>)%(i+<span class="number">1</span>);</div><div class="line">		a[i] = j;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a[n]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>是不是很精简呢？ 而且也丢掉了链表等数据结构，而且算法的复杂度也降低到了O(n).</p>
+<p>可是，问题并没有结束，如果细心的coder,可能可以看出来我的程序是右弊端的，当n = 1 or 2 的时候，程序没有办法进行识别…</p>
+<p>于是，我就找了一位朋友，丢过去了数据，让给我推一个递推式，<br>Woc，竟然推出来了，可惜并没有什么规律可循，就是去凑这个递推式。</p>
+<p>递推式如下：</p>
+<blockquote>
+<p> X(n) = (m + X(n-1)) % n; //其中n为总数，m为退出的个数，当前为3.</p>
+</blockquote>
+<p>最后，我又得到了一个更为精简的版本。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> m  3</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">return</span> ( (m + search(n<span class="number">-1</span>)) % n);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> n;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,search(n)+<span class="number">1</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以上。</p>
+
+  </section>
+
+  
+
+<section class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'assember-github-io'; 
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88571578-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
