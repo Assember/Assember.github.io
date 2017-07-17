@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      关于 JAVA语言中修饰符的整理 | Assember&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Freezer">
+    
+    
+
+    <meta name="description" content="关于JAVA语言中修饰符的整理在JAVA 语言的函数定义和变量定义的时候经常会用到修饰符，对于修饰符的使用范围，就需要有一个比较深入的理解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 JAVA语言中修饰符的整理 | Assember's Blog">
+<meta property="og:url" content="http://assember.github.io/2017/07/17/关于JAVA修饰符的整理/index.html">
+<meta property="og:site_name" content="Assember's Blog">
+<meta property="og:description" content="关于JAVA语言中修饰符的整理在JAVA 语言的函数定义和变量定义的时候经常会用到修饰符，对于修饰符的使用范围，就需要有一个比较深入的理解。">
+<meta property="og:updated_time" content="2017-07-17T10:06:42.765Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于 JAVA语言中修饰符的整理 | Assember's Blog">
+<meta name="twitter:description" content="关于JAVA语言中修饰符的整理在JAVA 语言的函数定义和变量定义的时候经常会用到修饰符，对于修饰符的使用范围，就需要有一个比较深入的理解。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Assember&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          I am a worker who assemble forever
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archives" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/assember" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">关于 JAVA语言中修饰符的整理</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-07-17" class="post-meta__date date">2017-07-17</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/JAVA/">JAVA</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/JAVA-修饰符/">JAVA 修饰符</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h1 id="关于JAVA语言中修饰符的整理"><a href="#关于JAVA语言中修饰符的整理" class="headerlink" title="关于JAVA语言中修饰符的整理"></a>关于JAVA语言中修饰符的整理</h1><p>在JAVA 语言的函数定义和变量定义的时候经常会用到修饰符，对于修饰符的使用范围，就需要有一个比较深入的理解。<br><a id="more"></a></p>
+<h2 id="JAVA语言中的修饰符"><a href="#JAVA语言中的修饰符" class="headerlink" title="JAVA语言中的修饰符"></a>JAVA语言中的修饰符</h2><p>JAVA语言中总共有四类修饰符</p>
+<ul>
+<li><strong>public</strong></li>
+<li><strong>protected</strong></li>
+<li><strong>private</strong></li>
+<li><strong>default</strong></li>
+</ul>
+<h2 id="每个修饰符的作用范围"><a href="#每个修饰符的作用范围" class="headerlink" title="每个修饰符的作用范围"></a>每个修饰符的作用范围</h2><p>对于JAVA语言来说一个函数或者是一个变量拥有的作用范围只有总共有四个：<br>从最小的开始是类、包、子类继承访问和包与包之间。</p>
+<p>下表中的default(默认)是指什么修饰符都不加的时候的情况。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">修饰符</th>
+<th style="text-align:right">类内</th>
+<th style="text-align:right">包内</th>
+<th style="text-align:center">子类访问(不同包)</th>
+<th style="text-align:center">包与包之间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">public</td>
+<td style="text-align:right">允许</td>
+<td style="text-align:right">允许</td>
+<td style="text-align:center">允许</td>
+<td style="text-align:center">允许</td>
+</tr>
+<tr>
+<td style="text-align:right">protected</td>
+<td style="text-align:right">允许</td>
+<td style="text-align:right">允许</td>
+<td style="text-align:center">允许</td>
+<td style="text-align:center">不允许</td>
+</tr>
+<tr>
+<td style="text-align:right">default</td>
+<td style="text-align:right">允许</td>
+<td style="text-align:right">允许</td>
+<td style="text-align:center">不允许</td>
+<td style="text-align:center">不允许</td>
+</tr>
+<tr>
+<td style="text-align:right">private</td>
+<td style="text-align:right">允许</td>
+<td style="text-align:right">不允许</td>
+<td style="text-align:center">不允许</td>
+<td style="text-align:center">不允许</td>
+</tr>
+</tbody>
+</table>
+<p>其中，public就不用再说了。就是所有的地方都可以访问。<br>其中比较难以区分的地方就在于剩下的三个：</p>
+<p><strong>private, default, protected</strong></p>
+<p>他们的作用范围再上表看来从private开始每一个就会多一个作用范围。</p>
+<h2 id="protected很简单"><a href="#protected很简单" class="headerlink" title="protected很简单"></a>protected很简单</h2><p>如果不想在其他包中访问，就用protected保护起来。</p>
+<h2 id="设置default的意义何在呢？"><a href="#设置default的意义何在呢？" class="headerlink" title="设置default的意义何在呢？"></a>设置default的意义何在呢？</h2><p>为什么默认的范围和Protected那么像，但是只是比它少了一个子类的继承。<br>这样子，假如让你来实现创造一个 默认，也就是什么都不写的修饰符，你会做成什么样子呢?</p>
+<p><strong>肯定不是public, 有可能是protected。</strong></p>
+<p>可是你有没有想过，并不是所有的类都设计为父类，就没有想要为其创建子类。<br>但是有心人却可以通过创建一个子类拿到其中的数据。</p>
+<p>这不就得不偿失了所以新添了一种默认的修饰符，让其拥有的protected的保护功能还有防止子类的作用。</p>
+<p>如果你需要子类访问，毕竟设计成可以被继承的父类并不是多数。这时候你手动添加protected就可以了。</p>
+<h2 id="Private是对于一种什么样的场景出现的呢"><a href="#Private是对于一种什么样的场景出现的呢" class="headerlink" title="Private是对于一种什么样的场景出现的呢"></a>Private是对于一种什么样的场景出现的呢</h2><p>面向对象语言有三个比较明显的特征在于：</p>
+<ul>
+<li>封装性</li>
+<li>继承性</li>
+<li>多态性</li>
+</ul>
+<p>其中封装性的要求在private修饰符的时候就已经得到了完美的展示。</p>
+<p><strong>不是所有的变量都可以允许其他人访问</strong></p>
+<p>例如，如果是一个密码加密的类，其中的一个变量用与保存加密的密钥。这个密钥只要别人知道了，就可以破解其他的密码。这样子，这个密钥存的就不允许被访问到。<br>或许又有人说了，那么别人怎么可能访问到你的代码呢？这个嘛~自己想</p>
+<p>设置成<strong>Private</strong>的目的就只有一个，那就是定义一些外部无法访问的自己用的变量。如果需要访问，就需要调用我生成的<strong>getter和setter</strong>方法。</p>
+<p>如果是只读，就可以不写setter方法，同样只写，就可以不写getter方法。<br>同时，在getter和setter方法中，我们可以通过设定一些限定条件，可以判断你传递过来的参数是否正确。</p>
+<p>另外，对于private 也不是完全无法访问<br>其实可以<a href="http://www.cnblogs.com/ChanSS/p/5716554.html" target="_blank" rel="external">利用反射绕过私有检查机制实行对private、protected成员变量或方法的访问</a></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p><strong>就这样，所有的修饰符都在这里了。</strong></p>
+<p>可能这都是一些基础到不能再基础的知识了，可是，我希望能够从一个新的角度，从设计者的角度重新解释这些修饰符的作用。希望对大家有用。</p>
+
+  </section>
+
+  
+
+<section class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'assember-github-io'; 
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88571578-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
